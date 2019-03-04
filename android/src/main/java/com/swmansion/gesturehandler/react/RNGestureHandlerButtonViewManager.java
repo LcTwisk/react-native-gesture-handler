@@ -56,8 +56,8 @@ public class RNGestureHandlerButtonViewManager extends
       mNeedBackgroundUpdate = true;
     }
 
-    public void setExclusive(Boolean exclusive) {
-      mExclusive = exclusive == null || exclusive;
+    public void setExclusive(boolean exclusive) {
+      mExclusive = exclusive;
     }
 
     public void setRippleColor(Integer color) {
@@ -264,9 +264,9 @@ public class RNGestureHandlerButtonViewManager extends
   public void setRippleRadius(ButtonViewGroup view, Integer rippleRadius) {
     view.setRippleRadius(rippleRadius);
   }
-  
-  @ReactProp(name = "exclusive")
-  public void setExclusive(ButtonViewGroup view, Boolean  exclusive) {
+
+  @ReactProp(name = "exclusive", defaultBoolean = true)
+  public void setExclusive(ButtonViewGroup view, boolean exclusive) {
     view.setExclusive(exclusive);
   }
 
