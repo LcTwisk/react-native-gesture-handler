@@ -208,12 +208,14 @@ public class RNGestureHandlerButtonViewManager extends
 
     @Override
     public void setPressed(boolean pressed) {
-      if (!pressed || sResponder == this || (sResponder == null && !mExclusive)) {
+      if (pressed && sResponder == null) {
+        // first button to be pressed grabs button responder
+        sResponder = this;
+      }
+
+      if ((!pressed || sResponder == this) || (sResponder == null && !mExclusive)) {
         // we set pressed state only for current responder if exclusive
         super.setPressed(pressed);
-      }
-      if (!pressed && sResponder == this) {
-        // if the responder is no longer pressed we release button responder
         sResponder = null;
       }
     }
